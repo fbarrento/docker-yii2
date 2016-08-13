@@ -38,9 +38,19 @@ RUN docker-php-ext-configure gd --enable-gd-native-ttf --with-freetype-dir=/usr/
 RUN docker-php-ext-install gd
 RUN pecl install imagick
 RUN docker-php-ext-enable imagick
-RUN pecl install memcached
-RUN docker-php-ext-enable memcached
+RUN set -xe cd /tmp \
+&& curl -sO https://codeload.github.com/php-memcached-dev/php-memcached/zip/php7 \
+&& unzip php7 \
+&& cd php-memcached-php7 \
+&& phpize \
+&& ./configure \
+&& make install \
+&& cd / && rm -rf /tmp/php-memcached-php7 \
+&& docker-php-ext-enable memcached
+
 RUN pecl install xdebug
 RUN docker-php-ext-enable xdebug
+
+
 
 CMD ["php", "-a"]
