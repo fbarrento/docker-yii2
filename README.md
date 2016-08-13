@@ -27,6 +27,6 @@ Build the full Yii2 test environmet
 # Use 
 `docker pull fbarrento/docker-yii2>`
  
- # Source
- GitHub: https://github.com/fbarrento/docker-yii2
+# Source
+GitHub: https://github.com/fbarrento/docker-yii2
  
