@@ -25,7 +25,7 @@ Build the full Yii2 test environmet
 - password: root
 
 # Use 
-`docker pull fbarrento/docker-yii2>`
+`docker pull fbarrento/docker-yii2`
  
 # Source
 GitHub: https://github.com/fbarrento/docker-yii2
