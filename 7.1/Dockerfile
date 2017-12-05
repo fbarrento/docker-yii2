@@ -62,6 +62,26 @@ RUN php -v && \
     git --version && \
     composer --version
 
+RUN docker-php-ext-install intl
+RUN docker-php-ext-install pdo_mysql
+RUN docker-php-ext-install pdo_pgsql
+RUN docker-php-ext-configure gd --enable-gd-native-ttf --with-freetype-dir=/usr/include/freetype2 --with-png-dir=/usr/include --with-jpeg-dir=/usr/include
+RUN docker-php-ext-install gd
+RUN pecl install imagick
+RUN docker-php-ext-enable imagick
+RUN set -xe cd /tmp \
+&& curl -sO https://codeload.github.com/php-memcached-dev/php-memcached/zip/php7 \
+&& unzip php7 \
+&& cd php-memcached-php7 \
+&& phpize \
+&& ./configure \
+&& make install \
+&& cd / && rm -rf /tmp/php-memcached-php7 \
+&& docker-php-ext-enable memcached
+
+RUN pecl install xdebug
+RUN docker-php-ext-enable xdebug
+
 VOLUME /var/lib/mysql
 
 CMD ["php", "-a"]
