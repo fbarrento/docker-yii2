@@ -1,5 +1,5 @@
 # This dockerfile uses the php image
-# Laravel Test - 5.5
+# Laravel Test - 7.1
 # Author: Francisco Barrento
 
 FROM php:7.1
@@ -9,8 +9,8 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -yq apt-uti
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -yq htop
 
 # Install mysql server
-RUN echo mysql-server mysql-server/root_password password root | debconf-set-selections
-RUN echo mysql-server mysql-server/root_password_again password root | debconf-set-selections
+RUN debconf-set-selections <<< 'mysql-server mysql-server/root_password password root'
+RUN debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password root'
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -yq mysql-server
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -yq \
