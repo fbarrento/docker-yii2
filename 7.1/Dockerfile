@@ -9,8 +9,8 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -yq apt-uti
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -yq htop
 
 # Install mysql server
-RUN debconf-set-selections <<< 'mysql-server mysql-server/root_password password root'
-RUN debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password root'
+RUN echo mysql-server mysql-server/root_password password root | debconf-set-selections
+RUN echo mysql-server mysql-server/root_password_again password root | debconf-set-selections
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -yq mysql-server
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -yq \
