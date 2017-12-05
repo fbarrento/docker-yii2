@@ -51,6 +51,6 @@ RUN set -xe cd /tmp \
 RUN pecl install xdebug
 RUN docker-php-ext-enable xdebug
 
-
+VOLUME /var/lib/mysql
 
 CMD ["php", "-a"]
