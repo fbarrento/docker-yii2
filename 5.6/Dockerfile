@@ -27,6 +27,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -yq \
     libjpeg62-turbo-dev \
     libmagickwand-dev \
     libmemcached-dev \
+    openjdk-7-jre-headless \
+    iceweasel \
     --no-install-recommends \
     --fix-missing
 RUN apt-get clean
