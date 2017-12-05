@@ -14,7 +14,7 @@ RUN echo mysql-server mysql-server/root_password_again password root | debconf-s
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -yq mysql-server
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
-    apt-get install install -yq \
+    apt-get install -yq \
     apt-transport-https \
     ca-certificates \
     curl \
